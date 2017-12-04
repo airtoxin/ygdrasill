@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
+import store from './store';
+import {Provider} from 'react-redux';
 
 export class App extends React.Component<undefined, undefined> {
   render() {
@@ -13,7 +15,13 @@ export class App extends React.Component<undefined, undefined> {
 }
 
 let render = () => {
-  ReactDOM.render(<AppContainer><App /></AppContainer>, document.getElementById('App'));
+  ReactDOM.render(
+    <AppContainer>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AppContainer>,
+    document.getElementById('App'));
 }
 
 render();
